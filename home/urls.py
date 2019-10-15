@@ -10,5 +10,6 @@ urlpatterns = [
     path('poll/',polling,name="poll"),
     path('lga/',lgalist,name="lga"),
     path('result/<int:id>',result,name="result"),
-    #path('partyresult/<int:id>',partyresult,name="presult"),
+    path('storeresult/',storeresult,name="sresult"),
+    path('lgaresult/<int:id>/<str:party>',lgaresult,name="presult"),
 ]

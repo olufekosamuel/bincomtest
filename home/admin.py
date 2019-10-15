@@ -4,6 +4,7 @@ from .models import *
 # Register your models here.
 
 admin.site.register(Lga)
+admin.site.register(Ward)
 admin.site.register(Agentname)
 admin.site.register(AnnouncedLgaResults)
 admin.site.register(AnnouncedPuResults)

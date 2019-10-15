@@ -1,38 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-
+{% extends "base.html" %}
+    
+{% block content %}
+<div class="container">
 <style>
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
 }
 </style>
-    <h1>Poll Result Page</h1>
+    <p>Poll Result Page </p>
     
     {%if result%}
-    <table style="width:100%">
+    <table class="table table-striped" style="width:100%">
     <tr>
         <th>Party</th>
         <th>Score</th>
-        <th>Date</th>
     </tr>
     {%for res in result%}
     <tr>
         <td>{{res.party_abbreviation}}</td>
         <td>{{res.party_score}}</td>
-        <td>{{res.date_entered}}</td>
     </tr>
     {%endfor%}
     </table>
     {%else%}
     <p>sorry, No result found for this polling unit</p>
     {%endif%}
-</body>
-</html>
+</div>
+{% endblock content %}

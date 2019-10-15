@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+    
+{% block content %}
+<div class="container">
+    <p>Store Result For A New Polling Unit</p>
+
+    <form action="" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+        {% csrf_token %}
+        <span>Polling unit name </span><input class="form-control" type="text" name="pollname" required><br>
+        <span>Polling unit number </span><input class="form-control" type="number" name="pollno" required><br>
+        <span>Polling unit description </span><br><textarea class="form-control" rows="4" cols="50" type="text" name="description" required></textarea><br>
+        <p>Enter election score for the following parties</p>
+        {% for part in party%}
+            <span>{{part.partyname}} </span><span><input class="form-control" type="number" name="{{part.partyname}}" required></span><br><br>
+        {%endfor%}
+        <span>LGA:</span>
+        <select class="form-control" name="lga">
+            {%for lg in lga%}
+                <option value="{{lg.uniqueid}}">{{lg.lga_name}}</option>
+            {%endfor%}
+        </select><br>
+        <span>Ward:</span>
+        <select class="form-control" name="ward">
+            {%for ward in wards%}
+                <option value="{{ward.ward_id}}">{{ward.ward_name}}</option>
+            {%endfor%}
+        </select><br>
+        <span>By User:</span>
+        <select class="form-control" name="user">
+            {%for user in users%}
+                <option value="{{user.firstname}} {{user.lastname}}">{{user.firstname}} {{user.lastname}}</option>
+            {%endfor%}
+        </select><br>
+        <input class="btn btn-default"  value="Submit" type="submit"/> 
+    </form>
+    <br>
+    <br>
+</div>
+{% endblock content %}

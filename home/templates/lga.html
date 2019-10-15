@@ -1,23 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-
+{% extends "base.html" %}
+    
+{% block content %}
 <style>
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
 }
 </style>
-    <h1>Local Goverment Result Checker</h1>
+<div class="container">
+    <h5>Local Goverment Result Checker</h5>
     <p>Choose local Goverment</p>
     {% csrf_token %}
     <select name="lgaselected">
+    <option value="0">select</option>
     {%for lga in locals%}
         <option value="{{lga.lga_id}}">{{lga.lga_name}}</option>
     {%endfor%}
@@ -30,24 +25,47 @@ table, th, td {
   border-collapse: collapse;
 }
 </style>
-    <h1>LGA Total Poll Result Page</h1>
+    <p>LGA Total Poll Result Page</p>
 
-    <table style="width:100%">
+    <table  class="table table-striped" style="width:100%">
     <tr>
         <th>Party</th>
         <th>Total Score</th>
-        <th>Date</th>
     </tr>
     {%for part in party%}
     <tr>
         <td>{{part.partyname}}</td>
-        <td>{{res.party_score}}</td>
-        <td>{{res.date_entered}}</td>
+        <td id='{{part.partyname}}'>none</td>
     </tr>
     {%endfor%}
     </table>
-
+</div>
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-</body>
-</html>
+<script type="text/javascript">
+	jQuery(function(){
+        $('select').on('change', function() {
+            var id=this.value;
+            
+            {%for part in party%}
+                $.ajax({
+                type: 'GET',
+                data:'', 
+                url: "{% url 'home:presult' 1 part.partyname %}".replace('1',id),
+                success: function (data) {
+                    $.each(data, function(index, value){
+                        if (value <= 0){
+                            $('#'+'{{part.partyname}}').replaceWith(function() { return"<td id='{{part.partyname}}'>none</td>"});
+                        }
+                        else{
+                            $('#'+'{{part.partyname}}').replaceWith(function() { return"<td id='{{part.partyname}}'>"+value+"</td>"});
+                            }
+                    });
+                }
+            });
+            {%endfor%}
+        });
+		
+	});
+</script>
+{% endblock content %}

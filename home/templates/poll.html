@@ -1,15 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Poll List</h1>
-    {% for p in poll%}
-        <p>{{p.uniqueid}} -- <a href="{% url 'home:result' p.uniqueid %}">Check Result</a></p>
-    {%endfor%}
-</body>
-</html>
+{% extends "base.html" %}
+    
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+        <div class="card-header">
+                Polling Units
+            </div>
+        {% for p in poll%}
+        <div class="col-md-3">
+        <div class="card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{p.polling_unit_name}} -- <a href="{% url 'home:result' p.uniqueid %}">Check Result</a></li>   
+            </ul>
+            </div>
+        </div>
+        {%endfor%}
+        </div>
+    </div>
+
+{% endblock content %}

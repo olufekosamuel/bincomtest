@@ -1,12 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Hello World</h1>
-</body>
-</html>
+{% extends "base.html" %}
+    
+{% block content %}
+<style>
+.poll{
+    border:2px solid #ECF0F1;
+    border-radius: 5px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+</style>
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+            <div class="poll">
+                <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Polling Units</h5>
+                    <p class="card-text">Get list of polling units and check results here</p>
+                    <a href="{% url 'home:poll'  %}" class="btn btn-primary">View</a>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-4">
+            <div class="poll">
+                <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Total Results</h5>
+                    <p class="card-text">Get total results of polling unit under a particular LGA</p>
+                    <a href="{% url 'home:lga'  %}" class="btn btn-primary">View</a>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-4">
+            <div class="poll">
+                <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Submit Results</h5>
+                    <p class="card-text">Store results of a new polling unit</p>
+                    <a href="{% url 'home:sresult'  %}" class="btn btn-primary">View</a>
+                </div>
+                </div>
+            </div>
+            </div>
+        <div>
+    </div>
+{% endblock content %}
+
