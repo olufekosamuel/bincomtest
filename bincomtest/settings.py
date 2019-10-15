@@ -77,14 +77,12 @@ WSGI_APPLICATION = 'bincomtest.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bincom_test',
-        'USER': 'root',  
-        'PASSWORD': 'samjam1989',
-        'HOST': 'localhost',
-        'PORT':  '3306',
+        'NAME': 'mololuwasamuel12$bincomtest',
+        'USER': 'mololuwasamuel12',
+        'PASSWORD': 'funbi1989',
+        'HOST': 'mololuwasamuel12.mysql.pythonanywhere-services.com',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
