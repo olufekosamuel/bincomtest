@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+    <h1>Local Goverment Result Checker</h1>
+    <p>Choose local Goverment</p>
+    {% csrf_token %}
+    <select name="lgaselected">
+    {%for lga in locals%}
+        <option value="{{lga.lga_id}}">{{lga.lga_name}}</option>
+    {%endfor%}
+    </select>
+
+    <br><br><br>
+    <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+    <h1>LGA Total Poll Result Page</h1>
+
+    <table style="width:100%">
+    <tr>
+        <th>Party</th>
+        <th>Total Score</th>
+        <th>Date</th>
+    </tr>
+    {%for part in party%}
+    <tr>
+        <td>{{part.partyname}}</td>
+        <td>{{res.party_score}}</td>
+        <td>{{res.date_entered}}</td>
+    </tr>
+    {%endfor%}
+    </table>
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</body>
+</html>
