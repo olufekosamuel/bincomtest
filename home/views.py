@@ -84,6 +84,7 @@ def storeresult(request):
             else:
                 res = AnnouncedPuResults.objects.create(party_abbreviation=part.partyname,party_score=request.POST[part.partyname],entered_by_user=user,user_ip_address=0,polling_unit_uniqueid=poll.polling_unit_id,date_entered=datetime.datetime.now())
             res.save()
-        return render(request, 'storeresult.html', {'party':party,'users':users,'wards':wards,'lga':Laga})
+            message = "Results submitted successfully"
+        return render(request, 'storeresult.html', {'party':party,'users':users,'wards':wards,'lga':Laga,'message':message})
 
     return render(request, 'storeresult.html', {'party':party,'users':users,'wards':wards,'lga':Laga})

@@ -2,6 +2,20 @@
     
 {% block content %}
 <div class="container">
+    {%if error %}
+    <div class="alert alert-danger alert-dismissible">
+        {{error}}
+    </div>
+    {%endif%}
+
+    {%if message%}
+    <div class="alert alert-successn alert-dismissible">
+        {{message}}
+    </div>
+
+    {%endif%}
+
+
     <p>Store Result For A New Polling Unit</p>
 
     <form action="" enctype="multipart/form-data" method="post" accept-charset="utf-8">
