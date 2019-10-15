@@ -16,7 +16,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 #from django.core.mail import send_mail
 from django.http import HttpResponse, HttpResponseRedirect
-from rest_framework.authtoken.models import Token
 from datetime import timedelta
 from django.views.decorators.csrf import csrf_protect
 from django.http import JsonResponse
